@@ -1,7 +1,8 @@
 package controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
+//import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.Blog;
+import model.User;
 
 
 
@@ -32,10 +36,16 @@ public class BlogController extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*		String blogDetails = request.getParameter("selectedAnswers");
+		String blogDetails = request.getParameter("selectedAnswers");
+		String[] blogDetail = blogDetails.split(",");
 		
-		
-		
+		//object for Blog
+		Blog blog = new Blog(blogDetail[0], blogDetail[1], null);
+		User user = new User(blogDetail[0], blogDetail[1], null);
+		blog.setTitle("A blog on Java.");
+		blog.setDescription("This sample blog explains about Java basics.");
+		LocalDateTime d = LocalDateTime.now();
+		blog.setPostedOn(d);
 
 		
 		if(blog!=null) {
@@ -44,7 +54,7 @@ public class BlogController extends HttpServlet {
 			RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/blogView.jsp");
 			rd.forward(request, response);
 		}
-	*/	
+	
 	}
 
 }
